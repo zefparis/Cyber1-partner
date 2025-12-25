@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCS-U7 POC Proposal | SASSA Fraud Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        danger: '#ef4444',
+                        light: '#f8fafc',
+                        gray: '#64748b',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.05) 100%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-inter bg-primary text-white leading-relaxed">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-primary/95 backdrop-blur-md px-4 sm:px-6 lg:px-10 py-4 flex justify-between items-center z-50 border-b border-white/10">
+        <div class="font-bold text-base sm:text-lg">HCS-U7 <span class="text-gray">× Cyber1</span></div>
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="lg:hidden text-gray hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <!-- Desktop nav -->
+        <div class="hidden lg:flex gap-6 xl:gap-8">
+            <a href="#problem" class="text-gray hover:text-white text-sm transition-colors">Problem</a>
+            <a href="#solution" class="text-gray hover:text-white text-sm transition-colors">Solution</a>
+            <a href="#shield" class="text-gray hover:text-white text-sm transition-colors">Shield Module</a>
+            <a href="#poc" class="text-gray hover:text-white text-sm transition-colors">POC</a>
+            <a href="#budget" class="text-gray hover:text-white text-sm transition-colors">Budget</a>
+            <a href="#contact" class="text-gray hover:text-white text-sm transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-primary/98 z-40 hidden lg:hidden pt-20">
+        <div class="flex flex-col items-center gap-6 p-8">
+            <a href="#problem" class="text-gray hover:text-white text-lg transition-colors mobile-link">Problem</a>
+            <a href="#solution" class="text-gray hover:text-white text-lg transition-colors mobile-link">Solution</a>
+            <a href="#shield" class="text-gray hover:text-white text-lg transition-colors mobile-link">Shield Module</a>
+            <a href="#poc" class="text-gray hover:text-white text-lg transition-colors mobile-link">POC</a>
+            <a href="#budget" class="text-gray hover:text-white text-lg transition-colors mobile-link">Budget</a>
+            <a href="#contact" class="text-gray hover:text-white text-lg transition-colors mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- SLIDE 1: Hero -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden bg-gradient-to-br from-primary to-slate-800" id="hero">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">01 / 15</span>
+        <div class="text-accent font-extrabold text-xl sm:text-2xl mb-4 sm:mb-5 mt-12 sm:mt-0">HCS-U7</div>
+        <h1 class="gradient-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-5">SASSA Fraud Intelligence</h1>
+        <p class="text-gray text-base sm:text-lg md:text-xl mb-6 sm:mb-10">POC Proposal — 90 Days, Offline, Zero Production Risk</p>
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
+            <span class="bg-accent/20 text-accent px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">Dual Value Proposition</span>
+            <span class="bg-accent/20 text-accent px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">Offline Architecture</span>
+            <span class="bg-accent/20 text-accent px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">90-Day POC</span>
+            <span class="bg-accent/20 text-accent px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">Risk Intelligence + Shield</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 mt-6 sm:mt-10">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">🔍 Fraud Intelligence</h3>
+                <p class="text-gray text-sm sm:text-base">Behavioral anomaly detection, investigative leads, post-payment fraud identification</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">🛡️ Shield Module <span class="bg-warning text-white px-2 sm:px-3 py-1 rounded text-xs font-semibold ml-2">UNIQUE</span></h3>
+                <p class="text-gray text-sm sm:text-base">IMSI catcher detection, impossible travel, GPS spoofing — state-level threat protection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Problem -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="problem">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">02 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">The SASSA Fraud Landscape</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Scale of the Problem</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                    <div class="text-center p-4 sm:p-6 bg-white/5 rounded-xl">
+                        <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-accent mb-2">R200B+</div>
+                        <div class="text-gray text-xs sm:text-sm">Annual Disbursements</div>
+                    </div>
+                    <div class="text-center p-4 sm:p-6 bg-white/5 rounded-xl">
+                        <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-accent mb-2">18M</div>
+                        <div class="text-gray text-xs sm:text-sm">Beneficiaries</div>
+                    </div>
+                    <div class="text-center p-4 sm:p-6 bg-white/5 rounded-xl">
+                        <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-accent mb-2">R10-30B</div>
+                        <div class="text-gray text-xs sm:text-sm">Estimated Fraud/Year</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Fraud Typologies</h3>
+                <ul class="space-y-3 sm:space-y-4">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Identity Misuse</strong> — Deceased beneficiaries, loaned IDs, synthetic identities</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Agent Corruption</strong> — IMSI catchers, GPS spoofing, syndicate collusion</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Beneficiary Fraud</strong> — Multiple claims, false documentation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Why Existing Solutions Fail -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="comparison">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">03 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-10 mt-8 sm:mt-0">Why Existing Solutions Fail</h2>
+        <div class="overflow-x-auto -mx-4 sm:mx-0">
+            <table class="w-full min-w-[600px] sm:min-w-0">
+                <thead>
+                    <tr>
+                        <th class="p-3 sm:p-4 text-left text-gray font-medium text-xs sm:text-sm uppercase border-b border-white/10">Capability</th>
+                        <th class="p-3 sm:p-4 text-left text-gray font-medium text-xs sm:text-sm uppercase border-b border-white/10">Experian</th>
+                        <th class="p-3 sm:p-4 text-left text-gray font-medium text-xs sm:text-sm uppercase border-b border-white/10">FICO Falcon</th>
+                        <th class="p-3 sm:p-4 text-left text-gray font-medium text-xs sm:text-sm uppercase border-b border-white/10">SAS Fraud</th>
+                        <th class="p-3 sm:p-4 text-left text-gray font-medium text-xs sm:text-sm uppercase border-b border-white/10">HCS-U7</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm sm:text-base">
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">Behavioral Biometrics</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ Basic</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ Basic</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ Basic</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ Advanced (6 tests)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">IMSI Catcher Detection</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ Shield Module</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">Impossible Travel</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ IP-based</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ IP-based</td>
+                        <td class="p-3 sm:p-4 text-warning border-b border-white/10">⚠️ IP-based</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ GPS + Haversine</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">GPS Spoofing Detection</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ Shield Module</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">Post-Quantum Crypto</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">❌</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ Dilithium3 + Kyber768</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 sm:p-4 text-slate-300 border-b border-white/10">Offline POC Risk</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">High</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">High</td>
+                        <td class="p-3 sm:p-4 text-danger border-b border-white/10">High</td>
+                        <td class="p-3 sm:p-4 text-success border-b border-white/10">✅ Zero</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="mt-6 sm:mt-8 text-gray text-sm sm:text-base">
+            <strong class="text-accent">Key Differentiator:</strong> HCS-U7 Shield Module detects state-level threats that bypass ALL traditional solutions.
+        </p>
+    </section>
+
+    <!-- SLIDE 4: Solution -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="solution">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">04 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">Dual Value Proposition</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">🔍</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Value Stream 1: Fraud Intelligence (Offline)</h3>
+                <ul class="space-y-3 sm:space-y-4">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Anomaly Detection</strong> — Behavioral clustering, statistical outliers, temporal analysis</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Investigative Leads</strong> — Top 100 high-risk cases, cluster analysis, evidence packages</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Efficiency Gains</strong> — 40% reduction in manual review, automated triage</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">🛡️</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Value Stream 2: Shield Module <span class="bg-warning text-white px-2 sm:px-3 py-1 rounded text-xs font-semibold ml-2">UNIQUE</span></h3>
+                <ul class="space-y-3 sm:space-y-4">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>IMSI Catcher Detection</strong> — LAC analysis, signal strength anomalies, encryption downgrade</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>Impossible Travel</strong> — Haversine distance, >900 km/h = impossible</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span><strong>GPS Spoofing</strong> — Round coordinates, impossible accuracy detection</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: Shield Module -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="shield">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">05 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">Shield Module Use Cases</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">📡</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Corrupt Agent Detection</h3>
+                <p class="text-gray mb-4 sm:mb-5 text-sm sm:text-base">SASSA agent using IMSI catcher (Stingray) to intercept beneficiary SMS OTPs</p>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>LAC = 0 → +40 risk points</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Signal > -40 dBm → +20 points</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Handover > 5/min → +10 points</li>
+                </ul>
+                <p class="mt-4 sm:mt-5 text-sm sm:text-base"><strong class="text-success">Impact:</strong> R2M+/year per agent</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">📍</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Syndicated Identity Theft</h3>
+                <p class="text-gray mb-4 sm:mb-5 text-sm sm:text-base">Same ID authenticated in Johannesburg, Cape Town, Durban within 2 hours</p>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>1,400 km in 1.5h = 933 km/h</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Impossible travel detected</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Risk score = 90 → CRITICAL</li>
+                </ul>
+                <p class="mt-4 sm:mt-5 text-sm sm:text-base"><strong class="text-success">Impact:</strong> R15M+/syndicate</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300 md:col-span-2 xl:col-span-1">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">🛰️</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">GPS Spoofing Fraud</h3>
+                <p class="text-gray mb-4 sm:mb-5 text-sm sm:text-base">Urban beneficiary spoofs GPS to claim rural disability grant</p>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Coordinates: -28.000000, 24.000000</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Accuracy: 2m (impossible)</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Pattern deviation detected</li>
+                </ul>
+                <p class="mt-4 sm:mt-5 text-sm sm:text-base"><strong class="text-success">Impact:</strong> R60k/year per case</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: Architecture -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="poc">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">06 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-10 mt-8 sm:mt-0">POC Architecture (Offline, Zero Risk)</h2>
+        <div class="bg-black/30 rounded-2xl p-4 sm:p-6 lg:p-10 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+<pre class="whitespace-pre-wrap sm:whitespace-pre">
+┌─────────────────────────────────────────────────────┐
+│  SASSA Production Systems <span class="text-success">(UNTOUCHED)</span>               │
+│  ├─ Grant disbursement database                     │
+│  ├─ Beneficiary authentication logs                 │
+│  └─ Payment transaction history                     │
+└────────────────────────┬────────────────────────────┘
+                         │
+                         │ <span class="text-accent font-bold">Batch export (daily, 6 months historical)</span>
+                         ▼
+┌─────────────────────────────────────────────────────┐
+│  Cyber1 Analytics Platform <span class="text-accent">(Secure Environment)</span>     │
+│  ├─ HCS-U7 Risk Engine (Docker container)           │
+│  ├─ Shield Module analysis                          │
+│  └─ Anomaly detection ML models                     │
+└────────────────────────┬────────────────────────────┘
+                         │
+                         │ <span class="text-accent font-bold">Risk scores + Investigative leads</span>
+                         ▼
+┌─────────────────────────────────────────────────────┐
+│  SASSA Fraud Investigation Dashboard                │
+│  ├─ Top 100 high-risk beneficiaries                 │
+│  ├─ Cluster visualization (network graphs)          │
+│  └─ Evidence packages (audit trail)                 │
+└─────────────────────────────────────────────────────┘
+</pre>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 mt-6 sm:mt-10">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Security & Compliance</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Air-gapped environment (Cyber1 infrastructure)</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Data anonymization (PII pseudonymization)</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>POPIA compliance (SA data protection)</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>ISO 27001 aligned</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Critical Constraints</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-danger">❌</span> NO payment blocking real-time</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-danger">❌</span> NO modification production systems</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-success">✅</span> Offline analysis ONLY</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-success">✅</span> Post-payment fraud detection</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: Timeline -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">07 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">POC Timeline — 90 Days</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
+            <div class="relative pl-8 sm:pl-10 border-l-2 border-accent">
+                <div class="relative pb-6 sm:pb-8">
+                    <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                    <div class="font-semibold text-white mb-2 text-sm sm:text-base">Month 1: Setup & Ingestion</div>
+                    <div class="text-gray text-sm">Environment setup, data pipeline, historical data load (6 months), validation</div>
+                </div>
+                <div class="relative pb-6 sm:pb-8">
+                    <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                    <div class="font-semibold text-white mb-2 text-sm sm:text-base">Month 2: Analysis & Detection</div>
+                    <div class="text-gray text-sm">Model training, Shield Module tuning, risk score generation, cluster detection</div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                    <div class="font-semibold text-white mb-2 text-sm sm:text-base">Month 3: Validation & Reporting</div>
+                    <div class="text-gray text-sm">SASSA investigator review, true positive validation, final report, executive presentation</div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Success Metrics</h3>
+                <div class="bg-white/5 rounded-xl overflow-hidden">
+                    <table class="w-full text-sm sm:text-base">
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">High-Risk Cases Flagged</td>
+                            <td class="p-3 sm:p-4 text-right"><strong class="text-success">500+</strong></td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Fraud Identified (Value)</td>
+                            <td class="p-3 sm:p-4 text-right"><strong class="text-success">R50M+</strong></td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Investigative Time Reduction</td>
+                            <td class="p-3 sm:p-4 text-right"><strong class="text-success">40%</strong></td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">True Positive Rate</td>
+                            <td class="p-3 sm:p-4 text-right"><strong class="text-success">>60%</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 sm:p-4 text-slate-300">Shield Alerts</td>
+                            <td class="p-3 sm:p-4 text-right"><strong class="text-success">50+</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: Cyber1 Role -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">08 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">Why Cyber1 is the Ideal Partner</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">🏛️</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Trusted Government Advisor</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>28 years cybersecurity experience</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Existing SASSA relationship</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Government sector expertise</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Security clearance</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">🔧</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Infrastructure & Integration</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Secure analytics environment</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>SIEM / SOAR platform</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>ISO 27001 certified</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>24/7 SOC operations</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300 md:col-span-2 xl:col-span-1">
+                <div class="text-3xl sm:text-4xl mb-4 sm:mb-5">📊</div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Risk Intelligence Expertise</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Fraud investigation support</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Anomaly detection experience</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Incident response workflows</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm"><span class="absolute left-0 text-accent">→</span>Reporting and dashboards</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 mt-6 sm:mt-10">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Cyber1 Responsibilities</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Prime integrator and project manager</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Secure environment provisioning</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>SASSA stakeholder management</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Final deliverables and reporting</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">HCS-U7 Responsibilities</h3>
+                <ul class="space-y-2 sm:space-y-3">
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Risk engine deployment (Docker)</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Shield Module configuration</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Model training and tuning</li>
+                    <li class="pl-6 sm:pl-8 relative text-slate-300 text-sm sm:text-base"><span class="absolute left-0 text-accent">→</span>Knowledge transfer to Cyber1</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: Budget -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="budget">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">09 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">Budget & Investment</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">POC Investment (90 Days)</h3>
+                <div class="bg-white/5 rounded-xl overflow-hidden">
+                    <table class="w-full text-sm sm:text-base">
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">HCS-U7 Licensing</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€50,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Cyber1 Services</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€80,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Data Engineering</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€30,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Training & Support</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€20,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Contingency (15%)</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€27,000</td>
+                        </tr>
+                        <tr class="bg-accent/20">
+                            <td class="p-3 sm:p-4 text-white font-bold">TOTAL POC</td>
+                            <td class="p-3 sm:p-4 text-right text-white font-bold">€207,000 <span class="text-gray text-xs sm:text-sm">(~R4.5M)</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-5">Post-POC Production (Annual)</h3>
+                <div class="bg-white/5 rounded-xl overflow-hidden">
+                    <table class="w-full text-sm sm:text-base">
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">HCS-U7 SaaS</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€300,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">Cyber1 Managed Services</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€200,000</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <td class="p-3 sm:p-4 text-slate-300">SASSA IT Resources</td>
+                            <td class="p-3 sm:p-4 text-right text-white">€100,000</td>
+                        </tr>
+                        <tr class="bg-accent/20">
+                            <td class="p-3 sm:p-4 text-white font-bold">TOTAL Year 1</td>
+                            <td class="p-3 sm:p-4 text-right text-white font-bold">€600,000 <span class="text-gray text-xs sm:text-sm">(~R13.2M)</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 mt-6 sm:mt-10 text-center">
+            <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-6">ROI Projection</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                <div class="p-4 sm:p-6">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-accent mb-2">R50M+</div>
+                    <div class="text-gray text-xs sm:text-sm">Fraud Identified (POC)</div>
+                </div>
+                <div class="p-4 sm:p-6">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-accent mb-2">R200M+</div>
+                    <div class="text-gray text-xs sm:text-sm">Fraud Identified (Year 1)</div>
+                </div>
+                <div class="p-4 sm:p-6">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-success mb-2">10x ROI</div>
+                    <div class="text-gray text-xs sm:text-sm">Net Savings: R182M+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: Next Steps -->
+    <section class="slide min-h-screen px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 flex flex-col justify-center border-b border-white/10 relative overflow-hidden" id="contact">
+        <span class="absolute top-4 sm:top-8 right-4 sm:right-10 text-sm text-gray font-medium">10 / 15</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 mt-8 sm:mt-0">Next Steps</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
+            <div>
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Immediate Actions (Week 1-2)</h3>
+                <div class="relative pl-8 sm:pl-10 border-l-2 border-accent">
+                    <div class="relative pb-6 sm:pb-8">
+                        <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                        <div class="font-semibold text-white mb-2 text-sm sm:text-base">1. SASSA Stakeholder Alignment</div>
+                        <div class="text-gray text-sm">Present POC proposal, secure executive sponsor, confirm data availability</div>
+                    </div>
+                    <div class="relative pb-6 sm:pb-8">
+                        <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                        <div class="font-semibold text-white mb-2 text-sm sm:text-base">2. Cyber1 Partnership Formalization</div>
+                        <div class="text-gray text-sm">Sign MOU, define roles, agree on commercials</div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[29px] top-1 w-3 h-3 bg-accent rounded-full"></div>
+                        <div class="font-semibold text-white mb-2 text-sm sm:text-base">3. Technical Readiness</div>
+                        <div class="text-gray text-sm">Data schema documentation, security validation, infrastructure sizing</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 text-center">
+                <h3 class="text-accent text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Contact Information</h3>
+                <div class="my-6 sm:my-8">
+                    <div class="text-accent font-extrabold text-xl sm:text-2xl mb-2">IA Solution</div>
+                    <p class="text-gray text-sm sm:text-base">HCS-U7 Cognitive Authentication</p>
+                </div>
+                <p class="my-4 sm:my-5">
+                    <strong class="text-white">Benjamin BARRÈRE</strong><br>
+                    <span class="text-gray">Founder & CTO</span>
+                </p>
+                <p class="text-gray text-sm sm:text-base">
+                    📧 benjamin@ia-solution.fr<br>
+                    🌐 investor.ia-solution.fr
+                </p>
+                <p class="mt-4 sm:mt-5 text-xs text-gray">
+                    Patents: FR2514274, FR2514546, FR2515560
+                </p>
+                <a href="mailto:benjamin@ia-solution.fr" class="inline-block bg-accent hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold mt-6 sm:mt-8 transition-all hover:-translate-y-0.5">Schedule a Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-4 sm:px-8 py-8 sm:py-10 text-center text-gray text-xs sm:text-sm">
+        <p>HCS-U7 × Cyber1 Partnership | POC SASSA Fraud Intelligence | December 2025</p>
+        <p class="mt-2 sm:mt-3">Confidential — For authorized recipients only</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
